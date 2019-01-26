@@ -1,4 +1,7 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -441,7 +444,7 @@ public class MainWindow extends JFrame {
 		departmentfield = new JTextField(40);
 		departmentfield.setEditable(true);
 		
-		addnewcourse = new JButton("Add Course");
+		addnewcourse = new JButton("Add New Course");
 		cancelcourse = new JButton("Cancel");
 		addnewcourse.addActionListener(new ButtonListen());
 		cancelcourse.addActionListener(new ButtonListen());
@@ -613,7 +616,7 @@ public class MainWindow extends JFrame {
 		semesterenroll.setHorizontalAlignment(JLabel.CENTER);
 		semestenrollfield = new JTextField(20);
 		
-		addenroll = new JButton("Add Enrollment");
+		addenroll = new JButton("Add New Enrollment");
 		addenroll.addActionListener(new ButtonListen2());
 		cancelenroll = new JButton("Cancel");
 		cancelenroll.addActionListener(new ButtonListen2());
@@ -741,7 +744,7 @@ public class MainWindow extends JFrame {
 		grdgradefield2.setHorizontalAlignment(JTextField.CENTER);
 		
 		
-		savegradebt = new JButton("Save Grade");
+		savegradebt = new JButton("Update Grade");
 		savegradebt.addActionListener(new ButtonListen2());
 		cancelgrade = new JButton("Cancel");
 		cancelgrade.addActionListener(new ButtonListen2());
@@ -802,7 +805,7 @@ public class MainWindow extends JFrame {
 		grdgradefield2 = new JTextField(1);
 		grdgradefield2.setHorizontalAlignment(JTextField.CENTER);
 		
-		addgrade = new JButton("Add Grade");
+		addgrade = new JButton("Add New Grade");
 		addgrade.addActionListener(new ButtonListen2());
 		cancelgrade = new JButton("Cancel");
 		cancelgrade.addActionListener(new ButtonListen2());
@@ -838,9 +841,12 @@ public class MainWindow extends JFrame {
 		reportsearchpanel = new JPanel();
 		reportsearchpanel.setLayout(new GridLayout(2,2));
 		
+	//	Border border =  BorderFactory.createEtchedBorder(Color.BLACK, Color.BLACK);
+	//	TitledBorder title = BorderFactory.createTitledBorder(border,"Create a Report");
+		 
 		reportmainpanel1 = new JPanel();
-		
 		reportmainpanel2 = new JPanel(new BorderLayout());
+	//	reportmainpanel2.setBorder(title);
 		
 		stidreport = new JLabel("Course ID");
 		stidreport.setHorizontalAlignment(JLabel.CENTER);
@@ -939,26 +945,21 @@ public class MainWindow extends JFrame {
 		reportdisplay = new JRadioButtonMenuItem("Report");
 		reportdisplay.addActionListener(new MenuListen());
 		
+		ButtonGroup menubuttons = new ButtonGroup();
 		
-		ButtonGroup studgroup = new ButtonGroup();
-		ButtonGroup coursegroup = new ButtonGroup();
-		ButtonGroup enrollgroup = new ButtonGroup();
-		ButtonGroup gradegroup = new ButtonGroup();
-		ButtonGroup reportgroup = new ButtonGroup();
+		menubuttons.add(studsearchbutton);
+		menubuttons.add(studaddbutton);
 		
-		studgroup.add(studsearchbutton);
-		studgroup.add(studaddbutton);
+		menubuttons.add(courssearch);
+		menubuttons.add(coursadd);
 		
-		coursegroup.add(courssearch);
-		coursegroup.add(coursadd);
+		menubuttons.add(enrollsearch);
+		menubuttons.add(enrolladd);
 		
-		enrollgroup.add(enrollsearch);
-		enrollgroup.add(enrolladd);
+		menubuttons.add(gradesearch);
+		menubuttons.add(gradeadd);
 		
-		gradegroup.add(gradesearch);
-		gradegroup.add(gradeadd);
-		
-		reportgroup.add(reportdisplay);
+		menubuttons.add(reportdisplay);
 		
 		
 		studmenu = new JMenu("Student");
